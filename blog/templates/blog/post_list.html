@@ -1,61 +1,13 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>première page html sous Django</title>
-    <!-- React && Babel -->
-      <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-      <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-      <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-    <!-- Styling -->
-      <!-- Bootstrap -->
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-      <!-- Fonts -->
-      <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-      <!-- Blog css -->
-      <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-  </head>
-  <body>
+{% extends 'blog/base.html' %}
 
-    <section id="root">
-    </section>
-
-    <script type="text/babel">
-      function Greetings () {
-        return (
-          <div>
-            Coucou cette phrase est produite par un composant en React
-          </div>
-        )
-      }
-
-      ReactDOM.render(
-        <Greetings />,
-        document.getElementById("root")
-      )
-    </script>
-
-    <header>
-        <h1><a href="/">Django Girls Blog</a></h1>
-    </header>
-
-    <section class="content container">
-      <div class="row">
-        <div class="col-md-8">
-        {% for post in posts %}
-          <article class="post">
-            <div class="date">
-              <p>published: {{ post.published_date }} </p>
-            </div>
-            <h1><a href="">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-          </article>
-        {% endfor %}
+{% block content %}
+  {% for post in posts %}
+    <article class="post">
+      <div class="date">
+        <p>published: {{ post.published_date }} </p>
       </div>
-    </div>
-  </section>
-
-  </body>
-</html>
+      <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+      <p>{{ post.text|linebreaksbr }}</p>
+    </article>
+  {% endfor %}
+{% endblock %}
