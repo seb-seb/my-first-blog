@@ -10,6 +10,23 @@ header {
     background-color: #ff9400;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
+    /* height:120px; */
+}
+
+.comment h2 {
+  font-family:cursive;
+}
+
+.comment {
+    margin: 20px 0px 20px 20px;
+}
+
+header h1 {
+  display:inline;
+}
+
+header div p {
+  font-size:0.5em;
 }
 
 header h1, header h1 a, header h1 a:visited, header h1 a:active {
@@ -48,4 +65,10 @@ header h1, header h1 a, header h1 a:visited, header h1 a:active {
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
+}
+
+.draft {
+  color:lightgrey;
+  font-style:italic;
+  font-family:cursive;
 }
